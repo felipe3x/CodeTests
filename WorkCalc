@@ -1,0 +1,109 @@
+#include <iostream>
+
+void AskTimeClockedIn();
+void AskTimeClockedOut();
+void AskifLunchTaken();
+int GetTime();
+char GetifLunchTaken();
+float ReturnYesorNo();
+
+int main()
+{
+    
+    AskTimeClockedIn();
+
+    int PunchTimeA = GetTime();
+
+    AskTimeClockedOut();
+
+    int PunchTimeB = GetTime();
+
+    float PunchTimeC = PunchTimeB - PunchTimeA;                            //Subtract both times 
+    int PunchTimeINT = PunchTimeC / 100;                                      //Getting time worked and dividing by 100
+    float GetBreakTaken = ReturnYesorNo();
+    float PunchTimeDecimal = PunchTimeC / 100;                                //Getting time worked in decimals
+    float SecondsTurnedPercentage = (PunchTimeDecimal - PunchTimeINT) / .6;  //isolating decimals and getting percentage in time
+    float RealTimeCalculated = PunchTimeINT + SecondsTurnedPercentage + GetBreakTaken; // Adding results to get actual time
+
+    std::cout << "You Clocked-in at: " << PunchTimeA << std::endl;
+    std::cout << "You Clocked-out at: " << PunchTimeB << std::endl;
+   
+    std::cout << "You worked " << RealTimeCalculated << " hrs" << std::endl;
+
+    return 0;
+}
+    
+     
+   //checking if the user took a break(subrtract the Break)
+float ReturnYesorNo()
+{
+    
+    char GettingAnswer = GetifLunchTaken();
+    
+
+    if (GettingAnswer == 'y' || GettingAnswer == 'Y')
+    {
+        
+        return (-.5);
+    }
+    else
+    {
+        
+        return 0;
+
+    }
+
+
+}
+
+// GETTING time user punched in/out
+int GetTime()
+{
+    int TimePunch;
+
+    std::cin >> TimePunch;
+
+    return TimePunch;
+
+}
+
+// ASKING time user clocked in
+void AskTimeClockedIn()
+{
+
+    std::cout << "What time did you clock-in(Military Time)?" << std::endl;
+
+    return;
+
+}
+
+// ASKING time user clocked out
+void AskTimeClockedOut()
+{
+
+    std::cout << "What time did you clock-out(Military Time)?" << std::endl;
+
+    return;
+
+}
+
+//ASKING if break taken
+void AskifLunchTaken()
+{
+    std::cout << "Did you take a 30min Break:"<< std::endl;
+
+    return;
+
+}
+
+//GETTING if break taken/  Yes or NO
+char GetifLunchTaken()
+{
+    AskifLunchTaken();
+    
+    char UserInput;
+    std::cin >> UserInput;
+
+    return UserInput;
+
+}
